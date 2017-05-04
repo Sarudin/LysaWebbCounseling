@@ -1,0 +1,171 @@
+$galleryBorderColor: #86F5F5;
+$galleryPicBorder: 3px;
+$galleryPicBorderStyle: solid;
+$owlPicWidth: 320px;
+$owlPicHeight: 210px;
+
+blockquote {
+    font-size: 20px;
+    padding-left: 10px;
+    border-left: none;
+}
+
+body {
+    font-family: 'Bree Serif', serif;
+    background-attachment: fixed;
+    background-image: url('../img/LysaCoast.png');
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 1;
+    background-color: hsla(0,0%,100%,0.70);
+    background-blend-mode: overlay;
+    background-repeat: no-repeat;
+}
+
+footer {
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+h2 {
+    text-align: center;
+}
+
+iframe {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+p {
+    padding-left: 75px;
+    font-size: 20px;
+}
+
+tr {
+    font-size: 20px;
+}
+
+.buttonWrapper {
+  width: 25%;
+  min-width: 150px;
+  height: 50vh;
+  min-height: 300px;
+  background-color: white;
+  display: flex;
+  justify-content: space-around;
+  align: center;
+  flex-direction: column;
+  border: solid;
+  border-radius: 10px;
+  border-color: black;
+}
+
+.centered {
+    text-align: center;
+}
+
+.clientAdminButton {
+  width: 50%;
+  min-width: 175px;
+  height: 5vh;
+  min-height: 30px;
+  margin: 0 auto;
+}
+
+.clientName {
+  width: 25%;
+  height: 5vh;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.cursive-font {
+    font-family: "Comic Sans MS", cursive;
+    font-size: 22px;
+    color: #ed4fff;
+}
+
+.form-control {
+  width: 30%;
+}
+
+.gallery {
+  border: $galleryPicBorder;
+  border-style: $galleryPicBorderStyle;
+  border-color: $galleryBorderColor;
+}
+
+.galleryPic {
+    @extend .gallery;
+    max-width: 75%;
+    max-height: 75vh;
+}
+
+.galleryPic-wide {
+    @extend .gallery;
+    max-width: 100%;
+    max-height: 100vh;
+}
+
+.heading {
+  padding-top: 10px;
+  align: center;
+}
+
+.main-page-Lysa-img {
+    width: 315px;
+    height: 400px;
+    float: left;
+    margin-right: 15px;
+    margin-left: 12px;
+}
+
+.mainWrapper {
+  width: 100%;
+  height: 100vh;
+  margin: 0 auto;
+}
+
+.nav-custom {
+    color: white;
+}
+.navbar {
+    font-size: 32;
+    font-weight: bold;
+    width: 100%;
+    position: fixed;
+}
+
+.navbar-default {
+    background-color: #0000cc;
+    color: blue;
+}
+
+.owlpic {
+  max-width: $owlPicWidth;
+  max-height: owlPicHeight;
+}
+
+.owlpic-left {
+    @extend .owlpic;
+    margin-left: 100px;
+}
+
+.payment-img {
+    margin-left: 10px;
+    height: 30px;
+    width: 45px;
+}
+
+.services-list {
+    color: black;
+}
+
+.word-colored {
+    color: white;
+}

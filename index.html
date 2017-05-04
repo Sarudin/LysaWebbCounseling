@@ -8,14 +8,15 @@
       <meta name="viewport" content="width=device-width, maximum-scale=1.4, initial-scale=1.0, user-scalable=yes" />
       <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
       <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
-      <link href="styles.css" rel="stylesheet" />
+      <link href="https://fonts.googleapis.com/css?family=Bree+Serif" rel="stylesheet">
+      <link rel="stylesheet" href="./styles.css">
   </head>
 
-  <body>
+  <body class="img img-responsive">
       <nav class="navbar navbar-default nav-custom" width="100%">
           <div class="container-fluid">
               <div class="navbar-header">
-                  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" aria-expanded="false">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
@@ -27,7 +28,7 @@
                   <ul class="nav navbar-nav navbar-right">
                       <li><a ui-sref="home" style="color: white;">Home</a></li>
                       <li class="dropdown">
-                          <a href="#" class="dropdown-toggle" style="color: white;" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Contact Info<span
+                          <a class="dropdown-toggle" style="color: white;" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Contact Info<span
                             class="caret"></span></a>
                           <ul class="dropdown-menu">
                               <li><a ui-sref="contactByEmail" style="color: black;">Contact By Email</a></li>
@@ -36,12 +37,12 @@
                       </li>
                       <li><a ui-sref="directions" style="color: white;">Directions</a></li>
                       <li><a ui-sref="picturePage" style="color: white;">Photo Gallery</a></li>
-                      <li class="bar-list"><a ui-sref="aboutMe" style="color: white;">About Lysa</a></li>
+                      <li><a ui-sref="aboutMe" style="color: white;">About Lysa</a></li>
                       <li class="dropdown">
-                          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="color: white;">Forms<span
+                          <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="color: white;">Forms<span
                             class="caret"></span></a>
                           <ul class="dropdown-menu">
-                              <li style="color: black;">Click on a form to download: </li>
+                              <li style="color: black;">Please select a form to download: </li>
                               <li><a ng-href="./forms/LPC Professional Statement 2016.pdf" target="_blank">Professional Disclosure Statement</a></li>
                               <li><a ng-href="./forms/Billing Policies.pdf" target="_blank">Billing Policy</a></li>
                               <li><a ng-href="./forms/Informed Consent.pdf" target="_blank" style="color: black;">Consent For Treatment</a></li>
@@ -51,6 +52,7 @@
                               <li><a ng-href="./forms/AllForms.zip" target="_blank" style="color: black;">Download all forms as zip</a></li>
                           </ul>
                       </li>
+                    <li><a ui-sref="adminLogin" style="color: white;">Admin Login</a></li>
                   </ul>
               </div>
           </div>
@@ -62,8 +64,7 @@
       <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.4.2/angular-ui-router.min.js" charset="utf-8"></script>
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js" charset="utf-8"></script>
       <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" charset="utf-8"></script>
-      <script src="./js/app.js" charset="utf-8"></script>
-      <script src="./js/controllers/pictureCtrl.js" charset="utf-8"></script>
+      <script src="./js/bundle.js" charset="utf-8"></script>
   </body>
 
 </html>
