@@ -54,6 +54,18 @@ tr {
 .centered {
   text-align: center; }
 
+.centeredElement {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  /* bring your own prefixes */
+  transform: translate(-50%, -50%); }
+
+.centeredSubmit {
+  align: center;
+  width: 100%;
+  text-align: center; }
+
 .clientAdminButton {
   width: 50%;
   min-width: 175px;
@@ -61,11 +73,26 @@ tr {
   min-height: 30px;
   margin: 0 auto; }
 
-.clientName {
-  width: 25%;
+.clientHomeButtonsWrapper {
+  width: 100%;
   height: 5vh;
   margin: 0 auto;
-  text-align: center; }
+  text-align: center;
+  align: center; }
+
+.clientNames {
+  width: 15%;
+  height: 5vh;
+  margin: 0 auto;
+  text-align: center;
+  align: center; }
+
+.clientNameButton {
+  width: 100%;
+  height: 5vh;
+  margin: 0 auto;
+  text-align: center;
+  align: center; }
 
 .cursive-font {
   font-family: "Comic Sans MS", cursive;
@@ -98,11 +125,6 @@ tr {
   float: left;
   margin-right: 15px;
   margin-left: 12px; }
-
-.mainWrapper {
-  width: 100%;
-  height: 100vh;
-  margin: 0 auto; }
 
 .nav-custom {
   color: white; }

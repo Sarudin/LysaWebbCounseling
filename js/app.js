@@ -38,10 +38,20 @@ angular.module('lysaSite', ['ui.router'])
       templateUrl: './templates/clients/viewAllClients.html',
       controller: 'viewAllClientsCtrl'
     })
+    .state('viewClient', {
+      url: '/viewClient',
+      templateUrl: './templates/clients/viewClientTmpl.html',
+      controller: 'viewClientCtrl'
+    })
     .state('createNewClient', {
       url: '/createNewClient',
       templateUrl: './templates/clients/createClientTmpl.html',
       controller: 'createClientCtrl'
+    })
+    .state('deleteClient', {
+      url: '/deleteClient',
+      templateUrl: './templates/clients/deleteClientTmpl.html',
+      controller: 'deleteClientCtrl'
     })
 
   $urlRouterProvider.otherwise('/');

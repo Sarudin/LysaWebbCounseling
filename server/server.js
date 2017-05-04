@@ -17,24 +17,22 @@ const db = app.get('db');
 const port = 4242;
 
 app.get('/clients/all', (req, res, next) => {
-  console.log("in /clients/all");
-  db.viewAllClients((err, clients) => {
+  db.viewAllClients((err, response) => {
     if (!err) {
-      res.status(200).send(clients)
+      res.status(200).send(response)
     }
   });
 });
 
 app.get('/clients/allInfo', (req, res, next) => {
-  db.viewAllClientInfo((err, clients) => {
+  db.viewAllClientInfo((err, response) => {
     if (!err) {
-      res.status(200).send(clients);
+      res.status(200).send(response);
     }
   });
 });
 
 app.post('/clients/addNew', (req, res, next) => {
-  console.log(req.body);
   db.createClient([req.body.firstName, req.body.lastName], (err) => {
     if (err) {
       console.log(err);
@@ -44,7 +42,7 @@ app.post('/clients/addNew', (req, res, next) => {
         if (!err) {
           db.createNewClientInfo([response[0].id, req.body.phone, req.body.email], (err) => {
             if (!err) {
-              res.status(200).send("Success!!");
+              res.status(200).send("Client added successfully.");
             }
             else {
               console.log(err);
@@ -59,26 +57,43 @@ app.post('/clients/addNew', (req, res, next) => {
   });
 });
 
-app.delete('/clients/one', (req, res, next) => {
-  db.deleteClient([req.query.id], (err) => {
+app.post('/clients/deleteone', (req, res, next) => {
+  db.getClientId([req.body.firstName, req.body.lastName], (err, response) => {
     if (!err) {
-      res.status(200).send();
+      db.deleteClientInfo([response[0].id], (err) => {
+        if (!err) {
+          db.deleteClient([response[0].id], (err) => {
+            if (!err) {
+              res.status(200).send("Client deleted successfully.");
+            }
+            else {
+              console.log(err);
+            }
+          });
+        }
+        else {
+          console.log(err);
+        }
+      })
     }
   })
 });
 
-app.get('/clients/one', (req, res, next) => {
-  db.viewClient([req.query.id], (err, client) => {
+app.post('/clients/one', (req, res, next) => {
+  db.viewClient([req.body.firstName + '%', req.body.lastName + '%'], (err, response) => {
     if (!err) {
-      res.status(200).send(client);
+      res.status(200).send(response);
+    }
+    else {
+      console.log(err);
     }
   })
 });
 
 app.get('/clients/search', (req, res, next) => {
-  db.searchClients([req.query.firstName, req.query.lastName], (err, clients) => {
+  db.searchClients([req.query.firstName, req.query.lastName], (err, response) => {
     if (!err) {
-      res.status(200).send(clients);
+      res.status(200).send(response);
     }
   })
 });

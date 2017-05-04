@@ -29,10 +29,18 @@ angular.module('lysaSite', ['ui.router']).config(["$stateProvider", "$urlRouterP
     url: '/viewAllClients',
     templateUrl: './templates/clients/viewAllClients.html',
     controller: 'viewAllClientsCtrl'
+  }).state('viewClient', {
+    url: '/viewClient',
+    templateUrl: './templates/clients/viewClientTmpl.html',
+    controller: 'viewClientCtrl'
   }).state('createNewClient', {
     url: '/createNewClient',
     templateUrl: './templates/clients/createClientTmpl.html',
     controller: 'createClientCtrl'
+  }).state('deleteClient', {
+    url: '/deleteClient',
+    templateUrl: './templates/clients/deleteClientTmpl.html',
+    controller: 'deleteClientCtrl'
   });
 
   $urlRouterProvider.otherwise('/');
@@ -58,12 +66,49 @@ angular.module('lysaSite').controller('createClientCtrl', ["$scope", "clientsSer
 }]);
 'use strict';
 
+angular.module('lysaSite').controller('deleteClientCtrl', ["$scope", "clientsService", function ($scope, clientsService) {
+  $scope.submit = function () {
+    var data = {
+      firstName: $scope.clientFirstName,
+      lastName: $scope.clientLastName
+    };
+
+    clientsService.deleteClient(data).then(function (response) {
+      if (response.status === 200) {
+        console.log("Client deleted successfully.");
+      }
+    });
+  };
+}]);
+'use strict';
+
 angular.module('lysaSite').controller('viewAllClientsCtrl', ["$scope", "clientsService", function ($scope, clientsService) {
   $scope.clients = [];
 
   clientsService.getAllClients().then(function (response) {
     $scope.clients = response.data;
   });
+}]);
+'use strict';
+
+angular.module('lysaSite').controller('viewClientCtrl', ["$scope", "clientsService", function ($scope, clientsService) {
+  $scope.client = {};
+
+  $scope.submit = function () {
+    var data = {
+      firstName: $scope.clientFirstName,
+      lastName: $scope.clientLastName
+    };
+
+    clientsService.viewClient(data).then(function (response) {
+      if (response.status === 200) {
+        console.log("Client returned successfully.");
+        $scope.client = response.data;
+      } else {
+        console.log("There was a problem.");
+      }
+    });
+  };
 }]);
 'use strict';
 
@@ -130,6 +175,24 @@ angular.module('lysaSite').service('clientsService', ["$http", function ($http) 
   this.createNewClient = function (data) {
     return $http.post('/clients/addNew', data).then(function (response) {
       return response.status;
+    });
+  };
+
+  this.viewClient = function (data) {
+    return $http.post('/clients/one', data).then(function (response) {
+      if (response.status === 200) {
+        console.log("Found client.");
+        return response;
+      }
+    });
+  };
+
+  this.deleteClient = function (data) {
+    return $http.post('/clients/deleteone', data).then(function (response) {
+      if (response.status === 200) {
+        console.log("Found client.");
+        return response;
+      }
     });
   };
 }]);

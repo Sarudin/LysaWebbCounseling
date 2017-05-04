@@ -4,9 +4,9 @@
       <h2><u>All Clients</u></h2>
   </div>
   <br><br><br><br>
-  <div ng-repeat="client in clients"><br>
-    <div class="clientName">
-      <h3>{{client.firstName}} {{client.lastName}}</h3>
+  <div ng-repeat="client in clients | orderBy: 'lastName'"><br>
+    <div class="clientNames">
+      <button class="btn btn-primary clientNameButton">{{client.firstName}} {{client.lastName}}</button>
     </div>
-  </div><br>
+  </div>
 </div>
