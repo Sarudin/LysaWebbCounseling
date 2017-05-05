@@ -3,16 +3,15 @@
   <div class="heading">
       <h2><u>Add A New Client</u></h2>
   </div>
-  <br><br><br><br>
   <div class="centeredElement">
     <form>
-      <p>First Name: <input type="text" style="float: right;" ng-model="clientFirstName"></input></p>
-      <p>Last Name: <input type="text" style="float: right;" ng-model="clientLastName"></input></p>
-      <p>Phone Number: <input type="text" style="float: right;" ng-model="clientPhone"></input></p>
-      <p>Email: <input type="text" style="float: right;" ng-model="clientEmail"></input></p>
-      <div>
-        <button type="submit" class="centeredSubmit" ng-click="submit()">Submit</button>
+      <p>First Name: <input type="text" style="float: right; width: 60%;" ng-model="clientFirstName"></input></p>
+      <p>Last Name: <input type="text" style="float: right; width: 60%;" ng-model="clientLastName"></input></p>
+      <p>Phone Number: <input type="text" style="float: right; width: 60%;" ng-model="clientPhone"></input></p>
+      <p>Email: <input type="text" style="float: right; width: 60%;" ng-model="clientEmail"></input></p>
+      <div class="centeredSubmit" style="top: 50%; left: 50%; transform: translate(45%, 20%);">
+        <button class="btn btn-primary" ng-click="submit()">Submit</button>
       </div>
     </form>
-  </div>
+  </div
 </div>

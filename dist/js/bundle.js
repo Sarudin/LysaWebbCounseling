@@ -33,10 +33,18 @@ angular.module('lysaSite', ['ui.router']).config(["$stateProvider", "$urlRouterP
     url: '/viewClient',
     templateUrl: './templates/clients/viewClientTmpl.html',
     controller: 'viewClientCtrl'
+  }).state('viewClientInfo', {
+    url: '/viewClientInfo',
+    templateUrl: './templates/clients/viewClientInfoTmpl.html',
+    controller: 'viewClientInfoCtrl'
   }).state('createNewClient', {
     url: '/createNewClient',
     templateUrl: './templates/clients/createClientTmpl.html',
     controller: 'createClientCtrl'
+  }).state('editClient', {
+    url: '/editClient',
+    templateUrl: './templates/clients/editClientTmpl.html',
+    controller: 'editClientCtrl'
   }).state('deleteClient', {
     url: '/deleteClient',
     templateUrl: './templates/clients/deleteClientTmpl.html',
@@ -82,6 +90,46 @@ angular.module('lysaSite').controller('deleteClientCtrl', ["$scope", "clientsSer
 }]);
 'use strict';
 
+angular.module('lysaSite').controller('viewClientCtrl', ["$scope", "clientsService", function ($scope, clientsService) {
+  $scope.client = [];
+  $scope.showDiv = false;
+
+  $scope.submitName = function () {
+    $scope.showDiv = !$scope.showDiv;
+
+    var data = {
+      firstName: $scope.clientFirstName,
+      lastName: $scope.clientLastName
+    };
+
+    clientsService.viewClient(data).then(function (response) {
+      console.log(response);
+      if (response.status === 200) {
+        console.log("Client returned successfully.");
+        $scope.client = response.data;
+      }
+    });
+  };
+
+  $scope.submitInfo = function () {
+    var clientData = {
+      firstName: $scope.clientInfoFirstName,
+      lastName: $scope.clientInfoLastName,
+      phone: $scope.clientInfoPhone,
+      email: $scope.clientInfoEmail
+    };
+  };
+
+  clientsService.viewClient(data).then(function (response) {
+    console.log(response);
+    if (response.status === 200) {
+      console.log("Client returned successfully.");
+      $scope.client = response.data;
+    }
+  });
+}]);
+'use strict';
+
 angular.module('lysaSite').controller('viewAllClientsCtrl', ["$scope", "clientsService", function ($scope, clientsService) {
   $scope.clients = [];
 
@@ -92,20 +140,22 @@ angular.module('lysaSite').controller('viewAllClientsCtrl', ["$scope", "clientsS
 'use strict';
 
 angular.module('lysaSite').controller('viewClientCtrl', ["$scope", "clientsService", function ($scope, clientsService) {
-  $scope.client = {};
+  $scope.client = [];
+  $scope.showDiv = false;
 
   $scope.submit = function () {
+    $scope.showDiv = !$scope.showDiv;
+
     var data = {
       firstName: $scope.clientFirstName,
       lastName: $scope.clientLastName
     };
 
     clientsService.viewClient(data).then(function (response) {
+      console.log(response);
       if (response.status === 200) {
         console.log("Client returned successfully.");
         $scope.client = response.data;
-      } else {
-        console.log("There was a problem.");
       }
     });
   };

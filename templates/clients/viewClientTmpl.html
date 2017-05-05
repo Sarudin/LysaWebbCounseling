@@ -3,11 +3,25 @@
     <h2><u>Single Client Select</u></h2>
 </div>
 <div class="centeredElement">
-  <form>
-    <p>First Name: <input type="text" ng-model="clientFirstName"></input></p>
-    <p>Last Name:&nbsp; <input type="text" ng-model="clientLastName"></input></p>
+  <form ng-hide="showDiv">
+    <p>First Name: <input type="text" ng-model="clientFirstName" style="float: right;"></input></p>
+    <p>Last Name: <input type="text" ng-model="clientLastName" style="float: right"></input></p>
     <div class="centeredSubmit">
-      <button type="submit" ng-click="submit()">Submit</button>
+      <button type="submit" class="btn btn-primary" style="left: 60%;" ng-click="submitName()">Submit</button>
+      <buton class="btn btn-primary bottomButton" style="left: 80%;" ui-sref="clientsAdminHome">Back</button>
     </div>
   </form>
+
+  <div ng-show="showDiv" class="centeredInfo">
+    <p>First Name:</p>
+    <p style="color: blue;">&nbsp;&nbsp;{{client[0].firstName}}</p>
+    <p>Last Name:</p>
+    <p style="color: blue;">&nbsp;&nbsp;{{client[0].lastName}}</p>
+    <p>Phone:</p>
+    <p style="color: blue;">&nbsp;&nbsp;{{client[0].phone}}</p>
+    <p>Email:</p>
+    <p style="color: blue;">&nbsp;&nbsp;{{client[0].email}}</p>
+    <button type="submit" class="btn btn-primary" style="left: 60%;" ng-click="submitInfo()">Submit</button>
+    <buton class="btn btn-primary bottomButton" ng-click="showDiv = !showDiv">Back</button>
+  </div>
 </div>

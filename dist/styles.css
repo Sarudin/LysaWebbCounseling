@@ -37,6 +37,13 @@ p {
 tr {
   font-size: 20px; }
 
+.bottomButton {
+  position: fixed;
+  top: 100%;
+  left: 50%;
+  /* bring your own prefixes */
+  transform: translate(-50%, 25%); }
+
 .buttonWrapper {
   width: 25%;
   min-width: 150px;
@@ -56,14 +63,20 @@ tr {
 
 .centeredElement {
   position: fixed;
-  top: 50%;
+  top: 40%;
+  left: 44%;
+  transform: translate(-50%, -40%); }
+
+.centeredInfo {
+  position: fixed;
+  top: 40%;
   left: 50%;
-  /* bring your own prefixes */
-  transform: translate(-50%, -50%); }
+  transform: translate(-17%, -40%); }
 
 .centeredSubmit {
   align: center;
-  width: 100%;
+  margin: 0 auto;
+  width: 50%;
   text-align: center; }
 
 .clientAdminButton {
