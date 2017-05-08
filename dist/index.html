@@ -1,70 +1,71 @@
 <!DOCTYPE html>
 <html ng-app="lysaSite">
 
-  <head>
-      <title>Lysa Webb Counseling</title>
+<head>
+  <title>Lysa Webb Counseling</title>
 
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width, maximum-scale=1.4, initial-scale=1.0, user-scalable=yes" />
-      <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-      <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
-      <link href="https://fonts.googleapis.com/css?family=Bree+Serif" rel="stylesheet">
-      <link rel="stylesheet" href="./styles.css">
-  </head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, maximum-scale=1.4, initial-scale=1.0, user-scalable=yes" />
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Josefin+Slab:100,300,400,600,700,100italic,300italic,400italic,600italic,700italic" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="./styles.css">
+</head>
 
-  <body class="img img-responsive">
-      <nav class="navbar navbar-default nav-custom" width="100%">
-          <div class="container-fluid">
-              <div class="navbar-header">
-                  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" aria-expanded="false">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                  <a class="navbar-brand" style="color: white;" href="#">Lysa Webb, MA LPC</a>
-              </div>
-              <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                  <ul class="nav navbar-nav navbar-right">
-                      <li><a ui-sref="home" style="color: white;">Home</a></li>
-                      <li class="dropdown">
-                          <a class="dropdown-toggle" style="color: white;" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Contact Info<span
-                            class="caret"></span></a>
-                          <ul class="dropdown-menu">
-                              <li><a ui-sref="contactByEmail" style="color: black;">Contact By Email</a></li>
-                              <li><a ui-sref="contactByPhone" style="color: black;">Contact By Phone</a></li>
-                          </ul>
-                      </li>
-                      <li><a ui-sref="directions" style="color: white;">Directions</a></li>
-                      <li><a ui-sref="picturePage" style="color: white;">Photo Gallery</a></li>
-                      <li><a ui-sref="aboutMe" style="color: white;">About Lysa</a></li>
-                      <li class="dropdown">
-                          <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="color: white;">Forms<span
-                            class="caret"></span></a>
-                          <ul class="dropdown-menu">
-                              <li style="color: black;">Please select a form to download: </li>
-                              <li><a ng-href="./forms/LPC Professional Statement 2016.pdf" target="_blank">Professional Disclosure Statement</a></li>
-                              <li><a ng-href="./forms/Billing Policies.pdf" target="_blank">Billing Policy</a></li>
-                              <li><a ng-href="./forms/Informed Consent.pdf" target="_blank" style="color: black;">Consent For Treatment</a></li>
-                              <li><a ng-href="./forms/Child Intake Form.pdf" target="_blank" style="color: black;">Intake Form</a></li>
-                              <li><a ng-href="./forms/Additional Intake Information.pdf" target="_blank" style="color: black;">Additional Intake Information Form</a></li>
-                              <li role="separator" class="divider"></li>
-                              <li><a ng-href="./forms/AllForms.zip" target="_blank" style="color: black;">Download all forms as zip</a></li>
-                          </ul>
-                      </li>
-                    <li><a ui-sref="adminLogin" style="color: white;">Admin Login</a></li>
-                  </ul>
-              </div>
-          </div>
-      </nav>
+<body>
+<div class="brand">Lysa Webb Counseling</div>
+  <nav class="navbar navbar-default" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="index.html">Lysa Webb Counseling</a>
+      </div>
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li><a ui-sref="home">Home</a></li>
+          <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Contact<span
+                        class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a ui-sref="contactByEmail" style="color: black;">Contact By Email</a></li>
+              <li><a ui-sref="contactByPhone" style="color: black;">Contact By Phone</a></li>
+            </ul>
+          </li>
+          <li><a ui-sref="directions">Directions</a></li>
+          <li><a ui-sref="picturePage">Pics</a></li>
+          <li><a ui-sref="aboutMe">About</a></li>
+          <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Forms<span
+                        class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li style="color: black;">Please select a form to download: </li>
+              <li><a ng-href="./forms/LPC Professional Statement 2016.pdf" target="_blank">Professional Disclosure Statement</a></li>
+              <li><a ng-href="./forms/Billing Policies.pdf" target="_blank">Billing Policy</a></li>
+              <li><a ng-href="./forms/Informed Consent.pdf" target="_blank" style="color: black;">Consent For Treatment</a></li>
+              <li><a ng-href="./forms/Child Intake Form.pdf" target="_blank" style="color: black;">Intake Form</a></li>
+              <li><a ng-href="./forms/Additional Intake Information.pdf" target="_blank" style="color: black;">Additional Intake Information Form</a></li>
+              <li role="separator" class="divider"></li>
+              <li><a ng-href="./forms/AllForms.zip" target="_blank" style="color: black;">Download all forms as zip</a></li>
+            </ul>
+          </li>
+          <li><a ui-sref="adminLogin">Admin</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <ui-view></ui-view>
 
-      <ui-view></ui-view>
-
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.js" charset="utf-8"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.4.2/angular-ui-router.min.js" charset="utf-8"></script>
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js" charset="utf-8"></script>
-      <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" charset="utf-8"></script>
-      <script src="./js/bundle.js" charset="utf-8"></script>
-  </body>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.js" charset="utf-8"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.4.2/angular-ui-router.min.js" charset="utf-8"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js" charset="utf-8"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" charset="utf-8"></script>
+  <script src="./js/bundle.js" charset="utf-8"></script>
+</body>
 
 </html>

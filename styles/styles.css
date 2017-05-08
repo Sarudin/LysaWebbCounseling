@@ -11,29 +11,29 @@ blockquote {
 }
 
 body {
-    font-family: 'Bree Serif', serif;
-    background-attachment: fixed;
-    background-image: url('../img/LysaCoast.png');
-    display: block;
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100vh;
-    z-index: 1;
-    background-color: hsla(0,0%,100%,0.70);
-    background-blend-mode: overlay;
-    background-repeat: no-repeat;
+    font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+    background: url('../img/LysaCoast.png') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
 }
 
 footer {
-    bottom: 0;
-    left: 0;
-    right: 0;
+    background: #fff;
+    background: rgba(255,255,255,0.9);
 }
 
-h2 {
-    text-align: center;
+footer p {
+    margin: 0;
+    padding: 50px 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    text-transform: uppercase;
+    font-family: "Josefin Slab","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: 700;
+    letter-spacing: 1px;
 }
 
 iframe {
@@ -42,19 +42,39 @@ iframe {
 }
 
 p {
-    padding-left: 75px;
-    font-size: 20px;
+    font-size: 1.25em;
+    line-height: 1.6;
+    color: #000;
+}
+
+hr {
+    max-width: 400px;
+    border-color: #999999;
 }
 
 tr {
     font-size: 20px;
 }
 
+.aboutText {
+  font-size: 1.5em;
+  text-align: center;
+  font-family: Josefin Slab;
+}
+
+.addressText {
+  font-size: 32px;
+  text-align: center;
+  font-family: Josefin Slab;
+  top: 50%;
+  left: 50%;
+  transform: translate(-25%, 20%);
+}
+
 .bottomButton {
   position: fixed;
   top: 100%;
   left: 50%;
-  /* bring your own prefixes */
   transform: translate(-50%, 25%);
 }
 
@@ -130,10 +150,10 @@ tr {
   align: center;
 }
 
-.cursive-font {
-    font-family: "Comic Sans MS", cursive;
-    font-size: 22px;
-    color: #ed4fff;
+.columnClass {
+  display: flex;
+  height: auto;
+  align-items: center;
 }
 
 .form-control {
@@ -163,12 +183,35 @@ tr {
   align: center;
 }
 
+.imageContainer {
+  height: auto;
+  margin-left: 15px;
+}
+
+.imageStyle {
+  margin: 0 auto;
+  height: auto;
+  width: auto;
+}
+
+.imageStyleLeft {
+  @extend .imageStyle;
+  margin-left: 10px;
+  margin-right: 20px;
+  padding-right: 40px;
+}
+
+.imageStyleRight {
+  @extend .imageStyle;
+  margin-left: 30px;
+  margin-right: 10px;
+}
+
 .main-page-Lysa-img {
     width: 315px;
     height: 400px;
-    float: left;
-    margin-right: 15px;
-    margin-left: 12px;
+    align: center;
+    margin: 0 auto;
 }
 
 .nav-custom {
@@ -178,7 +221,6 @@ tr {
     font-size: 32;
     font-weight: bold;
     width: 100%;
-    position: fixed;
 }
 
 .navbar-default {
@@ -208,4 +250,149 @@ tr {
 
 .word-colored {
     color: white;
+}
+
+.brand,
+.address-bar {
+    display: none;
+}
+
+.navbar-brand {
+    text-transform: uppercase;
+    font-weight: 900;
+    letter-spacing: 2px;
+}
+
+.navbar-nav {
+    text-transform: uppercase;
+    font-weight: 400;
+    letter-spacing: 3px;
+}
+
+.img-full {
+    min-width: 100%;
+}
+
+.brand-before,
+.brand-name {
+    text-transform: capitalize;
+}
+
+.brand-before {
+    margin: 15px 0;
+}
+
+.brand-name {
+    margin: 0;
+    font-size: 4em;
+}
+
+.tagline-divider {
+    margin: 15px auto 3px;
+    max-width: 250px;
+    border-color: #999999;
+}
+
+.box {
+    margin-bottom: 20px;
+    padding: 30px 15px;
+    background: #fff;
+    background: rgba(255,255,255,0.9);
+}
+
+.intro-text {
+    text-transform: uppercase;
+    font-size: 1.25em;
+    font-weight: 400;
+    letter-spacing: 1px;
+}
+
+.img-border {
+    float: none;
+    margin: 0 auto 0;
+    border: #999999 solid 1px;
+}
+
+.img-left {
+    float: none;
+    margin: 0 auto 0;
+}
+
+@media screen and (min-width:768px) {
+    .brand {
+        display: inherit;
+        margin: 0;
+        padding: 30px 0 10px;
+        text-align: center;
+        text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        font-family: "Josefin Slab","Helvetica Neue",Helvetica,Arial,sans-serif;
+        font-size: 5em;
+        font-weight: 700;
+        line-height: normal;
+        color: #fff;
+    }
+
+    .top-divider {
+        margin-top: 0;
+    }
+
+    .img-left {
+        float: left;
+        margin-right: 25px;
+    }
+
+    .address-bar {
+        display: inherit;
+        margin: 0;
+        padding: 0 0 40px;
+        text-align: center;
+        text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        text-transform: uppercase;
+        font-size: 1.25em;
+        font-weight: 400;
+        letter-spacing: 3px;
+        color: #fff;
+    }
+
+    .navbar {
+        border-radius: 0;
+    }
+
+    .navbar-header {
+        display: none;
+    }
+
+    .navbar {
+        min-height: 0;
+    }
+
+    .navbar-default {
+        border: none;
+        background: #fff;
+        background: rgba(255,255,255,0.9);
+    }
+
+    .nav>li>a {
+        padding: 35px;
+    }
+
+    .navbar-nav>li>a {
+        line-height: normal;
+    }
+
+    .navbar-nav {
+        display: table;
+        float: none;
+        margin: 0 auto;
+        table-layout: fixed;
+        font-size: 1.25em;
+    }
+}
+
+@media screen and (min-width:1200px) {
+    .box:after {
+        content: '';
+        display: table;
+        clear: both;
+    }
 }
