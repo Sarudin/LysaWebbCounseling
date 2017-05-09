@@ -90,11 +90,11 @@ angular.module('lysaSite').controller('deleteClientCtrl', ["$scope", "clientsSer
 }]);
 'use strict';
 
-angular.module('lysaSite').controller('viewClientCtrl', ["$scope", "clientsService", function ($scope, clientsService) {
+angular.module('lysaSite').controller('editClientCtrl', ["$scope", "clientsService", function ($scope, clientsService) {
   $scope.client = [];
   $scope.showDiv = false;
 
-  $scope.submitName = function () {
+  $scope.submit = function () {
     $scope.showDiv = !$scope.showDiv;
 
     var data = {
@@ -118,15 +118,15 @@ angular.module('lysaSite').controller('viewClientCtrl', ["$scope", "clientsServi
       phone: $scope.clientInfoPhone,
       email: $scope.clientInfoEmail
     };
-  };
 
-  clientsService.viewClient(data).then(function (response) {
-    console.log(response);
-    if (response.status === 200) {
-      console.log("Client returned successfully.");
-      $scope.client = response.data;
-    }
-  });
+    clientsService.viewClient(clientData).then(function (response) {
+      console.log(response);
+      if (response.status === 200) {
+        console.log("Client returned successfully.");
+        $scope.client = response.data;
+      }
+    });
+  };
 }]);
 'use strict';
 

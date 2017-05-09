@@ -6,16 +6,18 @@
 
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, maximum-scale=1.4, initial-scale=1.0, user-scalable=yes" />
+
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
   <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
-  <link href="https://fonts.googleapis.com/css?family=Josefin+Slab:100,300,400,600,700,100italic,300italic,400italic,600italic,700italic" rel="stylesheet" type="text/css">
+
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+  
   <link rel="stylesheet" href="./styles.css">
 </head>
 
 <body>
-<div class="brand">Lysa Webb Counseling</div>
-  <nav class="navbar navbar-default" role="navigation">
+  <nav class="navbar navbar-default" role="navigation" style="position: fixed; z-index: 10;">
     <div class="container">
       <div class="navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -26,7 +28,7 @@
         </button>
         <a class="navbar-brand" href="index.html">Lysa Webb Counseling</a>
       </div>
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1"">
         <ul class="nav navbar-nav">
           <li><a ui-sref="home">Home</a></li>
           <li class="dropdown">
@@ -59,6 +61,9 @@
       </div>
     </div>
   </nav>
+  <br><br><br><br><br>
+  <div class="brand">Lysa Webb Counseling</div>
+
   <ui-view></ui-view>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.js" charset="utf-8"></script>
