@@ -17,19 +17,23 @@
       <form ng-hide="showDiv">
         <p>First Name: <input type="text" ng-model="clientFirstName" style="float: right;"></input></p>
         <p>Last Name: <input type="text" ng-model="clientLastName" style="float: right"></input></p>
-        <div class="centeredSubmit">
+        <div align="center">
           <button type="submit" class="btn btn-primary" style="left: 60%;" ng-click="submit()">Get Client</button>
-          <buton class="btn btn-primary bottomButton" style="left: 80%;" ui-sref="clientsAdminHome">Back</button>
+          <buton class="btn btn-primary" style="left: 80%;" ui-sref="clientsAdminHome">Back</button>
+        </div>
+        <br>
+        <div align="center" ng-show="notFound">
+          <p style="color: red;">No user found by that name
         </div>
       </form>
       <div>
-        <form ng-show="showDiv">
-          <p>First Name: <input type="text" style="float: right; width: 150px;" ng-model="clientInfoFirstName" placeholder="{{client[0].firstName}}"></input></p>
-          <p>Last Name: <input type="text" style="float: right; width: 150px;" ng-model="clientInfoLastName" placeholder="{{client[0].lastName}}"></input></p>
-          <p>Phone: <input type="text" style="float: right; width: 150px;" ng-model="clientInfoPhone" placeholder="{{client[0].phone}}"></input></p>
-          <p>Email: <input type="text" style="float: right; width: 150px;" ng-model="clientInfoEmail" placeholder="{{client[0].email}}"></input></p>
+        <form ng-show="showDiv" ng-submit="submitInfo(client)">
+          <p>First Name: <input type="text" style="float: right; width: 150px;" ng-model="client.firstName"></input></p>
+          <p>Last Name: <input type="text" style="float: right; width: 150px;" ng-model="client.lastName"></input></p>
+          <p>Phone: <input type="text" style="float: right; width: 150px;" ng-model="client.phone"></input></p>
+          <p>Email: <input type="text" style="float: right; width: 150px;" ng-model="client.email"></input></p>
           <div align="center">
-            <button type="submit" class="btn btn-primary" style="left: 60%;" ng-click="submitInfo()">Submit Info</button>
+            <button type="submit" class="btn btn-primary" style="left: 60%;" >Submit Info</button>
             <buton class="btn btn-primary" ng-click="showDiv = !showDiv">Back</button>
           </div>
         </form>

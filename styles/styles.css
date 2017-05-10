@@ -72,61 +72,6 @@ tr {
   transform: translate(-25%, 20%);
 }
 
-.bottomButton {
-  position: fixed;
-  top: 100%;
-  left: 50%;
-  transform: translate(-50%, 25%);
-}
-
-.buttonWrapper {
-  width: 25%;
-  min-width: 150px;
-  height: 50vh;
-  min-height: 300px;
-  background-color: white;
-  display: flex;
-  justify-content: space-around;
-  align: center;
-  flex-direction: column;
-  border: solid;
-  border-radius: 10px;
-  border-color: black;
-}
-
-.centered {
-  text-align: center;
-}
-
-.centeredElement {
-  position: fixed;
-  top: 40%;
-  left: 44%;
-  transform: translate(-50%, -40%);
-}
-
-.centeredInfo {
-  position: fixed;
-  top: 40%;
-  left: 50%;
-  transform: translate(-17%, -40%);
-}
-
-.centeredSubmit {
-  align: center;
-  margin: 0 auto;
-  width: 50%;
-  text-align: center;
-}
-
-.clientAdminButton {
-  width: 50%;
-  min-width: 175px;
-  height: 5vh;
-  min-height: 30px;
-  margin: 0 auto;
-}
-
 .clientNames {
   display: flex;
   align-items: center;
@@ -137,10 +82,6 @@ tr {
   display: flex;
   height: auto;
   align-items: center;
-}
-
-.form-control {
-  width: 30%;
 }
 
 .gallery {
@@ -159,11 +100,6 @@ tr {
     @extend .gallery;
     max-width: 100%;
     max-height: 100vh;
-}
-
-.heading {
-  padding-top: 10px;
-  align: center;
 }
 
 .imageContainer {
@@ -204,9 +140,6 @@ tr {
     margin: 0 auto;
 }
 
-.nav-custom {
-    color: white;
-}
 .navbar {
     font-size: 32;
     font-weight: bold;
@@ -223,11 +156,6 @@ tr {
   max-height: owlPicHeight;
 }
 
-.owlpic-left {
-    @extend .owlpic;
-    margin-left: 100px;
-}
-
 .payment-img {
     margin-left: 10px;
     height: 30px;
@@ -236,14 +164,6 @@ tr {
 
 .playText {
   font-size: 1.5em;
-}
-
-.services-list {
-    color: black;
-}
-
-.word-colored {
-    color: white;
 }
 
 .brand,
@@ -263,30 +183,6 @@ tr {
     letter-spacing: 3px;
 }
 
-.img-full {
-    min-width: 100%;
-}
-
-.brand-before,
-.brand-name {
-    text-transform: capitalize;
-}
-
-.brand-before {
-    margin: 15px 0;
-}
-
-.brand-name {
-    margin: 0;
-    font-size: 4em;
-}
-
-.tagline-divider {
-    margin: 15px auto 3px;
-    max-width: 250px;
-    border-color: #999999;
-}
-
 .box {
     margin-bottom: 20px;
     padding: 30px 15px;
@@ -301,38 +197,19 @@ tr {
     letter-spacing: 1px;
 }
 
-.img-border {
-    float: none;
-    margin: 0 auto 0;
-    border: #999999 solid 1px;
-}
-
-.img-left {
-    float: none;
-    margin: 0 auto 0;
-}
-
 @media screen and (min-width:768px) {
     .brand {
         display: inherit;
         margin: 0;
         padding: 30px 0 10px;
         text-align: center;
-        text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
         font-family: $pageFont;
         font-size: 5em;
         font-weight: 700;
         line-height: normal;
         color: #fff;
-    }
+        text-shadow: 10px 10px 25px #2B0307;
 
-    .top-divider {
-        margin-top: 0;
-    }
-
-    .img-left {
-        float: left;
-        margin-right: 25px;
     }
 
     .address-bar {
@@ -340,8 +217,7 @@ tr {
         margin: 0;
         padding: 0 0 40px;
         text-align: center;
-        text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
-        text-transform: uppercase;
+        text-shadow: 50px 50px 50px #2B0307;
         font-size: 1.25em;
         font-weight: 400;
         letter-spacing: 3px;

@@ -1,2 +1,2 @@
-UPDATE "ClientInfo" SET "phone" = $1, "email" = $2
-WHERE "id" = $3;
+UPDATE "ClientInfo" SET "phone" = $2, "email" = $3
+WHERE "client_id_FK" = $1;

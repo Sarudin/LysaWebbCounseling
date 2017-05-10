@@ -20,6 +20,15 @@ angular.module('lysaSite').service('clientsService', function($http) {
     })
   };
 
+  this.editClient = (data) => {
+    return $http.post('/clients/edit', data).then(function(response) {
+      if (response.status === 200) {
+        console.log("Client updated.");
+        return response;
+      }
+    })
+  };
+
   this.deleteClient = (data) => {
     return $http.post('/clients/deleteone', data).then(function(response) {
       if (response.status === 200) {

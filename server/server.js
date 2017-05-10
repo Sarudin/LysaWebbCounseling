@@ -44,18 +44,20 @@ app.post('/clients/addNew', (req, res, next) => {
             if (!err) {
               res.status(200).send("Client added successfully.");
             }
-            else {
-              console.log(err);
-            }
           });
-        }
-        else {
-          console.log(err);
         }
       });
     }
   });
 });
+
+app.post('/clients/edit', (req, res, next) => {
+  db.editClientInfo([req.body.id, req.body.phone, req.body.email], (err) => {
+    if (!err) {
+      res.status(200).send();
+    }
+  })
+})
 
 app.post('/clients/deleteone', (req, res, next) => {
   db.getClientId([req.body.firstName, req.body.lastName], (err, response) => {
@@ -66,13 +68,7 @@ app.post('/clients/deleteone', (req, res, next) => {
             if (!err) {
               res.status(200).send("Client deleted successfully.");
             }
-            else {
-              console.log(err);
-            }
           });
-        }
-        else {
-          console.log(err);
         }
       })
     }
@@ -97,14 +93,6 @@ app.get('/clients/search', (req, res, next) => {
     }
   })
 });
-
-app.put('/clients/update', (req, res, next) => {
-  db.editClient([req.body.firstName, req.body.lastName, req.body.id], (err) => {
-    if (!err) {
-      res.status(200).send();
-    }
-  })
-})
 
 app.listen(port, () => {
   console.log(`Now listening on port ${port}`)

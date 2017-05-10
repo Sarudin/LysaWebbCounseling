@@ -93,9 +93,9 @@ angular.module('lysaSite').controller('deleteClientCtrl', ["$scope", "clientsSer
 angular.module('lysaSite').controller('editClientCtrl', ["$scope", "clientsService", function ($scope, clientsService) {
   $scope.client = [];
   $scope.showDiv = false;
+  $scope.notFound = false;
 
   $scope.submit = function () {
-    $scope.showDiv = !$scope.showDiv;
 
     var data = {
       firstName: $scope.clientFirstName,
@@ -103,24 +103,21 @@ angular.module('lysaSite').controller('editClientCtrl', ["$scope", "clientsServi
     };
 
     clientsService.viewClient(data).then(function (response) {
-      console.log(response);
       if (response.status === 200) {
-        console.log("Client returned successfully.");
-        $scope.client = response.data;
+        if (response.data.length === 0) {
+          $scope.notFound = true;
+        } else {
+          $scope.notFound = false;
+          $scope.showDiv = !$scope.showDiv;
+          console.log("Client returned successfully.");
+          $scope.client = response.data[0];
+        }
       }
     });
   };
 
-  $scope.submitInfo = function () {
-    var clientData = {
-      firstName: $scope.clientInfoFirstName,
-      lastName: $scope.clientInfoLastName,
-      phone: $scope.clientInfoPhone,
-      email: $scope.clientInfoEmail
-    };
-
-    clientsService.viewClient(clientData).then(function (response) {
-      console.log(response);
+  $scope.submitInfo = function (user) {
+    clientsService.editClient(user).then(function (response) {
       if (response.status === 200) {
         console.log("Client returned successfully.");
         $scope.client = response.data;
@@ -136,15 +133,29 @@ angular.module('lysaSite').controller('viewAllClientsCtrl', ["$scope", "clientsS
   clientsService.getAllClients().then(function (response) {
     $scope.clients = response.data;
   });
+
+  $scope.client = [];
+  $scope.showDiv = false;
+
+  $scope.submit = function (client) {
+
+    clientsService.viewClient(client).then(function (response) {
+      if (response.status === 200) {
+        $scope.showDiv = !$scope.showDiv;
+        console.log("Client returned successfully.");
+        $scope.client = response.data;
+      }
+    });
+  };
 }]);
 'use strict';
 
 angular.module('lysaSite').controller('viewClientCtrl', ["$scope", "clientsService", function ($scope, clientsService) {
   $scope.client = [];
   $scope.showDiv = false;
+  $scope.notFound = false;
 
   $scope.submit = function () {
-    $scope.showDiv = !$scope.showDiv;
 
     var data = {
       firstName: $scope.clientFirstName,
@@ -154,8 +165,14 @@ angular.module('lysaSite').controller('viewClientCtrl', ["$scope", "clientsServi
     clientsService.viewClient(data).then(function (response) {
       console.log(response);
       if (response.status === 200) {
-        console.log("Client returned successfully.");
-        $scope.client = response.data;
+        if (response.data.length === 0) {
+          $scope.notFound = true;
+        } else {
+          $scope.notFound = false;
+          $scope.showDiv = !$scope.showDiv;
+          console.log("Client returned successfully.");
+          $scope.client = response.data;
+        }
       }
     });
   };
@@ -232,6 +249,15 @@ angular.module('lysaSite').service('clientsService', ["$http", function ($http) 
     return $http.post('/clients/one', data).then(function (response) {
       if (response.status === 200) {
         console.log("Found client.");
+        return response;
+      }
+    });
+  };
+
+  this.editClient = function (data) {
+    return $http.post('/clients/edit', data).then(function (response) {
+      if (response.status === 200) {
+        console.log("Client updated.");
         return response;
       }
     });

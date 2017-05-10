@@ -17,12 +17,16 @@
       <form ng-hide="showDiv">
         <p>First Name: <input type="text" ng-model="clientFirstName" style="float: right;"></input></p>
         <p>Last Name: <input type="text" ng-model="clientLastName" style="float: right"></input></p>
-        <div class="centeredSubmit">
+        <div align="center">
           <button type="submit" class="btn btn-primary" style="left: 60%;" ng-click="submit()">Submit</button>
           <buton class="btn btn-primary" style="left: 80%;" ui-sref="clientsAdminHome">Back</button>
         </div>
+        <br>
+        <div align="center" ng-show="notFound">
+          <p style="color: red;">No user found by that name</p>
+        </div>
       </form>
-      <div ng-show="showDiv">
+      <div ng-show="showDiv" align="center">
         <p>First Name:</p>
         <p style="color: blue;">&nbsp;&nbsp;{{client[0].firstName}}</p>
         <p>Last Name:</p>
@@ -31,10 +35,9 @@
         <p style="color: blue;">&nbsp;&nbsp;{{client[0].phone}}</p>
         <p>Email:</p>
         <p style="color: blue;">&nbsp;&nbsp;{{client[0].email}}</p>
-        <span>
-          <button type="submit" class="btn btn-primary" style="left: 60%;" ng-click="submitInfo()">Submit</button>
+        <div align="center">
           <buton class="btn btn-primary" ng-click="showDiv = !showDiv">Back</button>
-        </span>
+        </div>
       </div>
     </div>
   </div>
