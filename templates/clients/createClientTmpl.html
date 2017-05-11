@@ -24,10 +24,16 @@
           <div align="center"></div>
         </form>
         <br>
-        <span>
+        <div align="center">
           <button class="btn btn-primary" ng-click="submit()">Submit</button>
           <button class="btn btn-primary" ui-sref="clientsAdminHome">Back</button>
-        </span>
+        </div>
+        <div ng-show="notCreated" align="center">
+          <p style="color: red;">Client creation failed</p>
+        </div>
+      </div>
+      <div ng-show="created" align="center">
+        <p style="color: red;">Client created</p>
       </div>
     </div>
   </div>

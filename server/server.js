@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const massive = require('massive');
 const passport = require('passport');
+const config = require('./config');
 
 const conn = massive.connectSync({
   connectionString: "postgres://postgres:bigbrush1@localhost/LysaWebbCounseling"
@@ -93,6 +94,12 @@ app.get('/clients/search', (req, res, next) => {
     }
   })
 });
+
+app.post('/clients/login', (req, res, next) => {
+  if (req.body.username === config.username && req.body.pwd === config.pwd) {
+    res.status(200).send();
+  }
+})
 
 app.listen(port, () => {
   console.log(`Now listening on port ${port}`)
