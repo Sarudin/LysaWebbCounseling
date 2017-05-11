@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const massive = require('massive');
 const passport = require('passport');
+const config = require('./config');
 
 const conn = massive.connectSync({
   connectionString: "postgres://postgres:bigbrush1@localhost/LysaWebbCounseling"
@@ -44,18 +45,20 @@ app.post('/clients/addNew', (req, res, next) => {
             if (!err) {
               res.status(200).send("Client added successfully.");
             }
-            else {
-              console.log(err);
-            }
           });
-        }
-        else {
-          console.log(err);
         }
       });
     }
   });
 });
+
+app.post('/clients/edit', (req, res, next) => {
+  db.editClientInfo([req.body.id, req.body.phone, req.body.email], (err) => {
+    if (!err) {
+      res.status(200).send();
+    }
+  })
+})
 
 app.post('/clients/deleteone', (req, res, next) => {
   db.getClientId([req.body.firstName, req.body.lastName], (err, response) => {
@@ -66,13 +69,7 @@ app.post('/clients/deleteone', (req, res, next) => {
             if (!err) {
               res.status(200).send("Client deleted successfully.");
             }
-            else {
-              console.log(err);
-            }
           });
-        }
-        else {
-          console.log(err);
         }
       })
     }
@@ -98,12 +95,10 @@ app.get('/clients/search', (req, res, next) => {
   })
 });
 
-app.put('/clients/update', (req, res, next) => {
-  db.editClient([req.body.firstName, req.body.lastName, req.body.id], (err) => {
-    if (!err) {
-      res.status(200).send();
-    }
-  })
+app.post('/clients/login', (req, res, next) => {
+  if (req.body.username === config.username && req.body.pwd === config.pwd) {
+    res.status(200).send();
+  }
 })
 
 app.listen(port, () => {

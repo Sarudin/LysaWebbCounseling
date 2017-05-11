@@ -1,27 +1,45 @@
 <br>
-<div class="heading">
-    <h2><u>Single Client Select</u></h2>
-</div>
-<div class="centeredElement">
-  <form ng-hide="showDiv">
-    <p>First Name: <input type="text" ng-model="clientFirstName" style="float: right;"></input></p>
-    <p>Last Name: <input type="text" ng-model="clientLastName" style="float: right"></input></p>
-    <div class="centeredSubmit">
-      <button type="submit" class="btn btn-primary" style="left: 60%;" ng-click="submitName()">Submit</button>
-      <buton class="btn btn-primary bottomButton" style="left: 80%;" ui-sref="clientsAdminHome">Back</button>
+<div class="row">
+  <div class="box">
+    <div class="col-lg-12">
+      <hr>
+      <h2 class="intro-text text-center">
+        Single Client Select
+      </h2>
+      <hr>
     </div>
-  </form>
-
-  <div ng-show="showDiv" class="centeredInfo">
-    <p>First Name:</p>
-    <p style="color: blue;">&nbsp;&nbsp;{{client[0].firstName}}</p>
-    <p>Last Name:</p>
-    <p style="color: blue;">&nbsp;&nbsp;{{client[0].lastName}}</p>
-    <p>Phone:</p>
-    <p style="color: blue;">&nbsp;&nbsp;{{client[0].phone}}</p>
-    <p>Email:</p>
-    <p style="color: blue;">&nbsp;&nbsp;{{client[0].email}}</p>
-    <button type="submit" class="btn btn-primary" style="left: 60%;" ng-click="submitInfo()">Submit</button>
-    <buton class="btn btn-primary bottomButton" ng-click="showDiv = !showDiv">Back</button>
+  </div>
+</div>
+<br>
+<div class="row">
+  <div class="box">
+    <div class="col-lg-12 loginClass" style>
+      <form ng-hide="showDiv">
+        <p>First Name: <input type="text" ng-model="clientFirstName" style="float: right;"></input></p>
+        <p>Last Name: <input type="text" ng-model="clientLastName" style="float: right"></input></p>
+        <br>
+        <div align="center">
+          <button type="submit" class="btn btn-primary" style="left: 60%;" ng-click="submit()">Submit</button>
+          <buton class="btn btn-primary" style="left: 80%;" ui-sref="clientsAdminHome">Back</button>
+        </div>
+        <br>
+        <div align="center" ng-show="notFound">
+          <p style="color: red;">No user found by that name</p>
+        </div>
+      </form>
+      <div ng-show="showDiv" align="center">
+        <p>First Name:</p>
+        <p style="color: blue;">&nbsp;&nbsp;{{client[0].firstName}}</p>
+        <p>Last Name:</p>
+        <p style="color: blue;">&nbsp;&nbsp;{{client[0].lastName}}</p>
+        <p>Phone:</p>
+        <p style="color: blue;">&nbsp;&nbsp;{{client[0].phone}}</p>
+        <p>Email:</p>
+        <p style="color: blue;">&nbsp;&nbsp;{{client[0].email}}</p>
+        <div align="center">
+          <buton class="btn btn-primary" ng-click="showDiv = !showDiv">Back</button>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

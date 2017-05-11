@@ -27,7 +27,8 @@ angular.module('lysaSite', ['ui.router'])
     })
     .state('adminLogin', {
       url: '/adminLogin',
-      templateUrl: './templates/adminLoginTmpl.html'
+      templateUrl: './templates/adminLoginTmpl.html',
+      controller: 'loginCtrl'
     })
     .state('clientsAdminHome', {
       url: '/clientsAdminHome',

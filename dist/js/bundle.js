@@ -21,7 +21,8 @@ angular.module('lysaSite', ['ui.router']).config(["$stateProvider", "$urlRouterP
     templateUrl: './templates/aboutMeTmpl.html'
   }).state('adminLogin', {
     url: '/adminLogin',
-    templateUrl: './templates/adminLoginTmpl.html'
+    templateUrl: './templates/adminLoginTmpl.html',
+    controller: 'loginCtrl'
   }).state('clientsAdminHome', {
     url: '/clientsAdminHome',
     templateUrl: './templates/clients/clientsHomeTmpl.html'
@@ -56,6 +57,8 @@ angular.module('lysaSite', ['ui.router']).config(["$stateProvider", "$urlRouterP
 'use strict';
 
 angular.module('lysaSite').controller('createClientCtrl', ["$scope", "clientsService", function ($scope, clientsService) {
+  $scope.created = false;
+  $scope.notCreated = false;
 
   $scope.submit = function () {
     var data = {
@@ -67,7 +70,11 @@ angular.module('lysaSite').controller('createClientCtrl', ["$scope", "clientsSer
 
     clientsService.createNewClient(data).then(function (response) {
       if (response === 200) {
+        $scope.created = true;
         console.log("Client created successfully.");
+      } else {
+        $scope.notCreated = true;
+        console.log("Client creation failure.");
       }
     });
   };
@@ -75,6 +82,8 @@ angular.module('lysaSite').controller('createClientCtrl', ["$scope", "clientsSer
 'use strict';
 
 angular.module('lysaSite').controller('deleteClientCtrl', ["$scope", "clientsService", function ($scope, clientsService) {
+  $scope.deleted = false;
+
   $scope.submit = function () {
     var data = {
       firstName: $scope.clientFirstName,
@@ -83,6 +92,7 @@ angular.module('lysaSite').controller('deleteClientCtrl', ["$scope", "clientsSer
 
     clientsService.deleteClient(data).then(function (response) {
       if (response.status === 200) {
+        $scope.deleted = !$scope.deleted;
         console.log("Client deleted successfully.");
       }
     });
@@ -90,12 +100,12 @@ angular.module('lysaSite').controller('deleteClientCtrl', ["$scope", "clientsSer
 }]);
 'use strict';
 
-angular.module('lysaSite').controller('viewClientCtrl', ["$scope", "clientsService", function ($scope, clientsService) {
+angular.module('lysaSite').controller('editClientCtrl', ["$scope", "clientsService", function ($scope, clientsService) {
   $scope.client = [];
   $scope.showDiv = false;
+  $scope.notFound = false;
 
-  $scope.submitName = function () {
-    $scope.showDiv = !$scope.showDiv;
+  $scope.submit = function () {
 
     var data = {
       firstName: $scope.clientFirstName,
@@ -103,30 +113,43 @@ angular.module('lysaSite').controller('viewClientCtrl', ["$scope", "clientsServi
     };
 
     clientsService.viewClient(data).then(function (response) {
-      console.log(response);
+      if (response.status === 200) {
+        if (response.data.length === 0) {
+          $scope.notFound = true;
+        } else {
+          $scope.notFound = false;
+          $scope.showDiv = !$scope.showDiv;
+          console.log("Client returned successfully.");
+          $scope.client = response.data[0];
+        }
+      }
+    });
+  };
+
+  $scope.submitInfo = function (user) {
+    clientsService.editClient(user).then(function (response) {
       if (response.status === 200) {
         console.log("Client returned successfully.");
         $scope.client = response.data;
       }
     });
   };
+}]);
+'use strict';
 
-  $scope.submitInfo = function () {
-    var clientData = {
-      firstName: $scope.clientInfoFirstName,
-      lastName: $scope.clientInfoLastName,
-      phone: $scope.clientInfoPhone,
-      email: $scope.clientInfoEmail
-    };
+angular.module('lysaSite').controller('loginCtrl', ["$scope", "clientsService", "$state", function ($scope, clientsService, $state) {
+  $scope.showErr = false;
+
+  $scope.login = function (user) {
+    clientsService.login(user).then(function (response) {
+      if (response.status === 200) {
+        $state.go('clientsAdminHome');
+        return response;
+      } else {
+        $scope.showErr = true;
+      }
+    });
   };
-
-  clientsService.viewClient(data).then(function (response) {
-    console.log(response);
-    if (response.status === 200) {
-      console.log("Client returned successfully.");
-      $scope.client = response.data;
-    }
-  });
 }]);
 'use strict';
 
@@ -136,15 +159,29 @@ angular.module('lysaSite').controller('viewAllClientsCtrl', ["$scope", "clientsS
   clientsService.getAllClients().then(function (response) {
     $scope.clients = response.data;
   });
+
+  $scope.client = [];
+  $scope.showDiv = false;
+
+  $scope.submit = function (client) {
+
+    clientsService.viewClient(client).then(function (response) {
+      if (response.status === 200) {
+        $scope.showDiv = !$scope.showDiv;
+        console.log("Client returned successfully.");
+        $scope.client = response.data;
+      }
+    });
+  };
 }]);
 'use strict';
 
 angular.module('lysaSite').controller('viewClientCtrl', ["$scope", "clientsService", function ($scope, clientsService) {
   $scope.client = [];
   $scope.showDiv = false;
+  $scope.notFound = false;
 
   $scope.submit = function () {
-    $scope.showDiv = !$scope.showDiv;
 
     var data = {
       firstName: $scope.clientFirstName,
@@ -154,8 +191,14 @@ angular.module('lysaSite').controller('viewClientCtrl', ["$scope", "clientsServi
     clientsService.viewClient(data).then(function (response) {
       console.log(response);
       if (response.status === 200) {
-        console.log("Client returned successfully.");
-        $scope.client = response.data;
+        if (response.data.length === 0) {
+          $scope.notFound = true;
+        } else {
+          $scope.notFound = false;
+          $scope.showDiv = !$scope.showDiv;
+          console.log("Client returned successfully.");
+          $scope.client = response.data;
+        }
       }
     });
   };
@@ -237,10 +280,29 @@ angular.module('lysaSite').service('clientsService', ["$http", function ($http) 
     });
   };
 
+  this.editClient = function (data) {
+    return $http.post('/clients/edit', data).then(function (response) {
+      if (response.status === 200) {
+        console.log("Client updated.");
+        return response;
+      }
+    });
+  };
+
   this.deleteClient = function (data) {
     return $http.post('/clients/deleteone', data).then(function (response) {
       if (response.status === 200) {
         console.log("Found client.");
+        return response;
+      } else {
+        return undefined;
+      }
+    });
+  };
+
+  this.login = function (data) {
+    return $http.post('/clients/login', data).then(function (response) {
+      if (response.status === 200) {
         return response;
       }
     });
