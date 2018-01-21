@@ -31,12 +31,17 @@ angular.module('lysaSite').service('clientsService', function($http) {
 
   this.deleteClient = (data) => {
     return $http.post('/clients/deleteone', data).then((response) => {
-      if (response.status === 200) {
-        console.log("Found client.");
-        return response;
+      if (response.status === 201) {
+        return response.status;
       }
       else {
-        return undefined;
+        if (response.status === 200) {
+          console.log("Found client.");
+          return response;
+        }
+        else {
+          return undefined;
+        }
       }
     })
   }

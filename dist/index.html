@@ -30,60 +30,60 @@
       </div>
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
-          <li><a ui-sref="home">Home</a></li>
+          <li><a ui-sref="home" id="homeTab">Home</a></li>
           <li class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Contact<span
+            <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" id="contactDropdown">Contact<span
                         class="caret"></span></a>
             <ul class="dropdown-menu">
-              <li><a ui-sref="contactByEmail" style="color: black;">Contact By Email</a></li>
-              <li><a ui-sref="contactByPhone" style="color: black;">Contact By Phone</a></li>
+              <li><a ui-sref="contactByEmail" style="color: black;" id="emailOption">Contact By Email</a></li>
+              <li><a ui-sref="contactByPhone" style="color: black;" id="phoneOption">Contact By Phone</a></li>
             </ul>
           </li>
-          <li><a ui-sref="directions">Directions</a></li>
-          <li><a ui-sref="picturePage">Pics</a></li>
-          <li><a ui-sref="aboutMe">About</a></li>
-          <li class="dropdown">
+          <li><a ui-sref="directions" id="directionsTab">Directions</a></li>
+          <li><a ui-sref="picturePage" id="picsTab">Pics</a></li>
+          <li><a ui-sref="aboutMe" id="aboutTab">About</a></li>
+          <li class="dropdown" id="formsTab">
             <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Forms
               <span class="caret"></span>
             </a>
             <ul class="dropdown-menu">
               <br>
-              <li style="color: black;">Please select a form to download: </li>
+              <li style="color: black;" id="selectAFormText">Please select a form to download: </li>
               <hr>
               <li>
-                <a ng-href="./forms/LPC Professional Statement 2016.pdf" target="_blank">
+                <a ng-href="./forms/LPC Professional Statement 2016.pdf" id="PDS" target="_blank">
                   Professional Disclosure Statement
                 </a>
               </li>
               <li>
-                <a ng-href="./forms/Billing Policies.pdf" target="_blank">
+                <a ng-href="./forms/Billing Policies.pdf" id="billingPolicy" target="_blank">
                   Billing Policy
                 </a>
               </li>
               <li>
-                <a ng-href="./forms/Informed Consent.pdf" target="_blank" style="color: black;">
+                <a ng-href="./forms/Informed Consent.pdf" id="treatmentConsent" target="_blank" style="color: black;">
                   Consent For Treatment
                 </a>
               </li>
               <li>
-                <a ng-href="./forms/Child Intake Form.pdf" target="_blank" style="color: black;">
+                <a ng-href="./forms/Child Intake Form.pdf" id="intakeForm" target="_blank" style="color: black;">
                   Intake Form
                 </a>
               </li>
               <li>
-                <a ng-href="./forms/Additional Intake Information.pdf" target="_blank" style="color: black;">
+                <a ng-href="./forms/Additional Intake Information.pdf" id="addlIntake" target="_blank" style="color: black;">
                   Additional Intake Information Form
                 </a>
               </li>
               <hr>
               <li>
-                <a ng-href="./forms/AllForms.zip" target="_blank" style="color: black;">
+                <a ng-href="./forms/AllForms.zip" target="_blank" id="downloadAll" style="color: black;">
                   Download all forms as zip
                 </a>
               </li>
             </ul>
           </li>
-          <li><a ui-sref="adminLogin">Admin</a></li>
+          <li><a ui-sref="adminLogin" id="adminTab">Admin</a></li>
         </ul>
       </div>
     </div>

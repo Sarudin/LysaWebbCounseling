@@ -19,19 +19,22 @@
       </div>
       <br>
       <form>
-        <p>First Name: <input type="text" style="float: right;" ng-model="clientFirstName"></input></p>
-        <p>Last Name:<input type="text" style="float: right;" ng-model="clientLastName"></input></p>
+        <p>First Name: <input type="text" style="float: right;" ng-model="clientFirstName" required></input></p>
+        <p>Last Name:<input type="text" style="float: right;" ng-model="clientLastName" required></input></p>
         <br>
         <div align="center">
           <button class="btn btn-primary" type="submit" ng-click="submit()">Submit</button>
           <button class="btn btn-primary" ui-sref="clientsAdminHome">Back</button>
         </div>
+        <div ng-show="notFound" align="center">
+          <p style="color: red;">Client not found</p>
+        </div>
+        <div ng-show="namesReq" align="center">
+          <p style="color: red;">First and last name are required</p>
+        </div>
       </form>
       <div ng-show="deleted" align="center">
         <p style="color: red;">Client deleted</p>
-      </div>
-      <div ng-show="notFound" align="center">
-        <p style="color: red;">Client not found</p>
       </div>
     </div>
   </div>

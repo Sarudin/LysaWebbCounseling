@@ -83,6 +83,7 @@ angular.module('lysaSite').controller('createClientCtrl', ["$scope", "clientsSer
 
 angular.module('lysaSite').controller('deleteClientCtrl', ["$scope", "clientsService", function ($scope, clientsService) {
   $scope.deleted = false;
+  $scope.namesReq = false;
 
   $scope.submit = function () {
     var data = {
@@ -91,9 +92,14 @@ angular.module('lysaSite').controller('deleteClientCtrl', ["$scope", "clientsSer
     };
 
     clientsService.deleteClient(data).then(function (response) {
-      if (response.status === 200) {
-        $scope.deleted = !$scope.deleted;
-        console.log("Client deleted successfully.");
+      if (response.status === 201) {
+        console.log('No client returned!');
+        $scope.namesReq = !$scope.namesReq;
+      } else {
+        if (response.status === 200) {
+          $scope.deleted = !$scope.deleted;
+          console.log("Client deleted successfully.");
+        }
       }
     });
   };
@@ -291,11 +297,15 @@ angular.module('lysaSite').service('clientsService', ["$http", function ($http) 
 
   this.deleteClient = function (data) {
     return $http.post('/clients/deleteone', data).then(function (response) {
-      if (response.status === 200) {
-        console.log("Found client.");
-        return response;
+      if (response.status === 201) {
+        return response.status;
       } else {
-        return undefined;
+        if (response.status === 200) {
+          console.log("Found client.");
+          return response;
+        } else {
+          return undefined;
+        }
       }
     });
   };
